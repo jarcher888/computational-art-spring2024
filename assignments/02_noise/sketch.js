@@ -1,8 +1,6 @@
-let circles = [];
-let numCircles = 20;
+let numCircles = 10;
 let rotateAngle = 0;
-let offsets = [];
-//let angle = radians(18);
+let alpha = .01;
 
 
 function setup() {
@@ -11,72 +9,39 @@ function setup() {
  angleMode(RADIANS);
  translate(400, 300);
 
-
-//  for (let i = 0; i < numCircles; i++){
-//   circles[i] = new customCircle(cos(radians(18)) * 50, sin(radians(18)) * 50, 10, 0);
-//   offsets[i] = 0;
-//  }
-
 }
 
-//let xoff = 0;
-
-let xoff = 0;
-let rotateOff = 0;
-let radiusOff = 0;
+let xoff = 0; 
 
 function draw() {
-  background(0, 0, 100);
+  background(0, 0, 100, alpha);
   
-  // for (let i = 0; i < numCircles; i++){
-  //   circles[i].update();
-  // }
+  if (alpha == 0){
+    stroke('white');
+    noStroke();
+  }else{
+    stroke('black');
+  }
 
-
-  // let rotateAngle = 360 / numCircles;
-  // let smallCircleRadius = 50;
-  
-  //radians(rotateAngle);
-  //rotate(angle);
-  //strokeWeight(10);
   translate(400, 300);
-  let radius = map(noise(radiusOff), 0, 1, 50, 200);
-  circle(0, 0, 50);
-  let angle = radians(18);
+  let radius = map(noise(xoff), 0, 1, 50, 500);
+  noFill();
+  circle(0, 0, radius / 2);
+  let angle = radians(360 / numCircles);
   rotate(rotateAngle);
   
+  rotateAngle += map(noise(xoff), 0, 1, -.1, .1);
   
-  //line(0, 0, x, sin(3 *PI/2) * 50);
-
-  
-  rotateAngle += map(noise(rotateOff), 0, 1, -.1, .1);
-  //console.log(baseAngle);
-  //rotateAngle += rotateAngle;
   
   for (let i = 0; i < numCircles; i++){
-    let x = map(noise(xoff), 0, 1, radius - 25, radius + 25);
-    //line(0, 0, cos(angle) * 50, sin(angle) * 50);
-    circle(cos(angle) * radius / 2 + x, sin(angle) * radius / 2, 10);
-    angle += radians(18);
+    let hue = map(i, 0, numCircles, 0, 360);
+    fill(hue, 100, 100);
+    line(0, 0, cos(angle) * 50, sin(angle) * 50);
+    circle(cos(angle) * radius / 2, sin(angle) * radius / 2, 10);
+    angle += radians(360 / numCircles);
 
-    xoff+=.01;
+    xoff+=.001;
     
   }
-    
-
   
 }
-
-// class customCircle{
-//   constructor(x, y, radius, offset){
-//     this.position = createVector(x, y);
-//     this.radius = radius;
-//     this.offset = offset;
-//   }
-
-//   update(){
-//     fill(255, 0, 0);
-//     ellipse(this.position.x, this.position.y, this.radius / 2);
-    
-//   }
-// }
