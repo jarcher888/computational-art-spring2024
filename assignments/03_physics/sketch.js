@@ -13,10 +13,6 @@ function setup() {
  
  downwardGravity = createVector(0, 1);
 
- 
- splashForce = createVector(-10, -10);
-
-
  for (let i = 0; i < numDots; i++){
   let x = random(0, width)
   let y = random(0, 1200);
@@ -41,18 +37,25 @@ function draw() {
   for (let dot of dots){
     //Check to see if dot if hitting the bottom -> splash
     if (dot.pos.y + dot.dheight/2 > height - 40 && dot.pos.y + dot.dheight/2 < height -30){
-      splashDots.push(new Dot(dot.pos.x + 5, height - 40, 10, 10, -1));
-      splashDots.push(new Dot(dot.pos.x - 5, height - 40, 10, 10, -1));
-      for (let splashDot of splashDots){
-        splashDot.update();
-        splashDot.show();
-      }
-      
-      //dot.splash();
+      let splashLeft = new Dot(dot.pos.x - 5, height - 40, 10, 10, -1);
+      let splashRight = new Dot(dot.pos.x + 5, height - 40, 10, 10, -1);
+      splashDots.push(splashLeft);
+      splashDots.push(splashRight);
+      splashLeft.addForce(createVector(-15, -15));
+      splashRight.addForce(createVector(15, -15));
     }
     
     dot.update();
     dot.show();
   }
-  splashDots=[];
+  for (let splashDot of splashDots){
+    splashDot.update();
+    splashDot.show();
+  }
+  for (let i = splashDots.length - 1; i >= 0; i--){
+    if (splashDots[i].lifetime < 0){
+      splashDots.splice(i, 1);
+    }
+  }
+  // splashDots=[];
 }

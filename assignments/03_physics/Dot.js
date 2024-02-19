@@ -12,6 +12,7 @@ class Dot{
         this.dheight = dheight;
         this.dwidth = dwidth;
 
+        this.lifetime = 30;
     }
 
     addForce(force){
@@ -25,33 +26,22 @@ class Dot{
         
     }
 
-    splash(){
-        
-        fill(this.hue + 30, 50, 100, .5);
-        
-        let splashDot1 = new Dot(this.pos.x + 5, height - 40, 10, 10, -1);
-        
-        let splashDot2 = new Dot(this.pos.x - 5, height - 40, 10, 10, -1);
-        splashDot1.update();
-        splashDot1.show();
-        splashDot2.update();
-        splashDot2.show();
-    }
-
     update(){
         this.addForce(downwardGravity);
         this.addForce(wind);
         if (this.index == -1){
-            this.addForce(splashForce);
+            this.lifetime -= 1;
         }
+        
         
         this.vel.add(this.acc);
         
         this.vel.limit(5);
         this.pos.add(this.vel);
-        //this.addForce(gravity);
         
-        this.wrap();
+        if (this.index != -1){
+            this.wrap();
+        }
         
         this.acc.mult(0);
     }
