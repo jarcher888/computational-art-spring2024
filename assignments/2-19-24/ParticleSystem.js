@@ -23,7 +23,7 @@ class ParticleSystem{
             this.pos.y -= this.speed;
           }
 
-        if (this.active){
+        if (this.active) {
             this.particles.push(new Particle(this.pos.x, this.pos.y, this.hue));
         }
 
