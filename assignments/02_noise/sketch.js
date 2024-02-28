@@ -1,6 +1,6 @@
 let numCircles = 10;
 let rotateAngle = 0;
-let alpha = 0;
+let alpha = 0.01;
 
 
 function setup() {

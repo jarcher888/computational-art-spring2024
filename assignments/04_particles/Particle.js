@@ -5,8 +5,8 @@ class Particle{
         this.acc = createVector(0, 0);
         this.hue = random(360);
 
-        this.mass = random(10, 20);
-        this.radius = this.mass * 3;
+        this.mass = random(10, 30);
+        this.radius = this.mass * 2.5;
         
         this.lifetime = 200;
     }
