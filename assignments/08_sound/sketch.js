@@ -12,7 +12,7 @@ let loopInterval = 1;
 
 let scale = 'phrygian major';
 
-let numBalls = 10;
+let numBalls = 8;
 let balls = [];
 
 function setup() {
@@ -45,7 +45,7 @@ function draw() {
 
 function preload(){
   kickSample = loadSound("https://jarcher888.github.io/computational-art-spring2024/assignments/08_sound/samples/kick.wav");
-  birds = loadSound("https://jarcher888.github.io/computational-art-spring2024/assignments/08_sound/samples/birds.wav");
+  birds = loadSound("https://jarcher888.github.io/computational-art-spring2024/assignments/08_sound/samples/bird.wav");
 }
 
 function mousePressed(){
@@ -53,6 +53,7 @@ function mousePressed(){
 
   if (mouseX >= width / 2 && mouseX <= width / 2 + 100 && mouseY >= height / 2 && mouseY <= height / 2 + 100){
     kickSample.play();
+    birds.play();
 
     synth = new p5.PolySynth();
 
