@@ -1,7 +1,7 @@
 # A Saunter Through the Seasons
 
 ## Link
-[A Saunter Through the Seasons](jarcher888.github.io/computational-art-spring2024/assignments/final)
+[A Saunter Through the Seasons](https://github.com/YOUR_GIHUB_USERNAME/computational-art-spring2024/tree/main/assignments/final)
 
 ## Five Interconnected Aspects
 1. The seasons change when the predator reaches the end of the screen.
